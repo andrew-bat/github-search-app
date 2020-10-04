@@ -145,6 +145,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "github-search-app"
+    }
+  },
+  "defaultProject": "github-search-app",
+  "cli": {
+    "analytics": false
+  }
 }
