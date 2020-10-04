@@ -5,6 +5,7 @@ import {MainLayoutComponent} from './shared/layouts/main-layout/main-layout.comp
 const routes: Routes = [
   {
     path: '', component: MainLayoutComponent, children: [
+      // {path: '**', redirectTo: '/home', pathMatch: 'full'}
     ]
   }
 ];
