@@ -1,13 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FavoritesPageComponent} from './favorites-page/favorites-page.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
   declarations: [FavoritesPageComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild([
+      {path: '', component: FavoritesPageComponent}
+    ])
   ]
 })
-export class FavoritesModule { }
+export class FavoritesModule {
+}

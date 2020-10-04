@@ -2,8 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {HomePageComponent} from './home-page/home-page.component';
-import {SearchFormComponent} from './components/search-form/search-form.component';
-import { RepositoryListComponent } from './components/repository-list/repository-list.component';
+import {SearchFormComponent} from './home-page/search-form/search-form.component';
+import {RepositoryListComponent} from './home-page/repository-list/repository-list.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -13,7 +14,10 @@ import { RepositoryListComponent } from './components/repository-list/repository
     RepositoryListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild([
+      {path: '', component: HomePageComponent}
+    ])
   ]
 })
 export class HomeModule {

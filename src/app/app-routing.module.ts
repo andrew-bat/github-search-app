@@ -5,7 +5,9 @@ import {MainLayoutComponent} from './shared/layouts/main-layout/main-layout.comp
 const routes: Routes = [
   {
     path: '', component: MainLayoutComponent, children: [
-      // {path: '**', redirectTo: '/home', pathMatch: 'full'}
+      {path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
+      {path: 'favorites', loadChildren: () => import('./favorites/favorites.module').then(m => m.FavoritesModule)},
+      {path: '**', redirectTo: '/home', pathMatch: 'full'}
     ]
   }
 ];
