@@ -2,17 +2,17 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 
-import {FavoritesPageComponent} from './favorites-page/favorites-page.component';
+import {AuthPageComponent} from './auth-page/auth-page.component';
 
 
 @NgModule({
-  declarations: [FavoritesPageComponent],
+  declarations: [AuthPageComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path: '', component: FavoritesPageComponent}
+      {path: '', component: AuthPageComponent}
     ])
   ]
 })
-export class FavoritesModule {
+export class AuthModule {
 }
