@@ -1,0 +1,73 @@
+.repository-item {
+  font-size: 13px;
+
+  display: block;
+  padding: 5px;
+  width: 100%;
+  max-width: 1130px;
+  height: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+
+  transition: all linear .2s;
+}
+
+.repository-item:hover {
+  background: #232526;
+  background: linear-gradient(to right, rgba(35, 37, 38, .3), rgba(65, 67, 69, .3));
+}
+
+.inner-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+}
+
+.action {
+  display: flex;
+  justify-content: space-around;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating > img {
+  display: block;
+  width: 100%;
+  max-width: 15px;
+  margin-right: 10px;
+}
+
+.language {
+  font-size: 14px;
+}
+
+.link {
+  text-transform: uppercase;
+}
+
+.btn-favorite {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+.favorite-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 70px;
+
+}
