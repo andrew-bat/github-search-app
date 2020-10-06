@@ -1,4 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+
+import {IOrigin} from '../../models/origin.model';
+import {IRepository} from '../../models/repository.model';
 
 @Component({
   selector: 'app-repository-item',
@@ -7,7 +10,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class RepositoryItemComponent implements OnInit {
 
-  added = false;
+  @Input() public origin: IOrigin;
+  @Input() public repository: IRepository;
+  public originEnum = IOrigin;
+  private added = false;
 
   constructor() {
   }

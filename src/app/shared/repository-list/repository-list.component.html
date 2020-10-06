@@ -1,11 +1,3 @@
-<app-repository-item></app-repository-item>
-<app-repository-item></app-repository-item>
-<app-repository-item></app-repository-item>
-<app-repository-item></app-repository-item>
-<app-repository-item></app-repository-item>
-<app-repository-item></app-repository-item>
-<app-repository-item></app-repository-item>
-<app-repository-item></app-repository-item>
-<app-repository-item></app-repository-item>
-<app-repository-item></app-repository-item>
-<app-repository-item></app-repository-item>
+<ng-container *ngFor = "let repository of repositories">
+  <app-repository-item [origin]="origin" [repository]="repository"></app-repository-item>
+</ng-container>

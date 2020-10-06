@@ -1,29 +1,36 @@
 <div class="repository-item">
   <div class="inner-block">
-    <img class="avatar" src="https://learn.javascript.ru/courses/list/angular.png" alt="Avatar">
+    <img class="avatar" src="{{repository.owner && repository.owner.avatar_url }}" alt="Avatar">
 
     <div class="info">
-      <h6 class="title">Angular 10</h6>
-      <p class="text">eniam! Aliquam animi, aperiam architecto consequatur debitis distinctio dol maiores minima minus
-        officia praesentium quae quas, quasi quia repudiandae sapiente tempore tenetur veniam? Assumenda aut blanditiis
-        consequuntur cumque cupiditate delectus dolore dolorum laborum, minus modi molestiae natus nesciunt perspiciatis
-        porro provident quasi quisquam quos sequi totam unde. A commodi delectus deleniti dolorum excepturi expedita
-        illo, laboriosam, libero nobis odit quis sit vitae voluptas!</p>
+      <h6 class="title">{{repository.full_name}}</h6>
+      <p class="text">{{repository.description}}</p>
     </div>
 
-    <button class="btn-favorite">
-      <img
-        (click)="onAdd()"
-        [src]="added ? './assets/star-full.svg' : './assets/star-outline.svg'"
-        alt="Star"
-        class="favorite-add"
-      >
-    </button>
+    <div class="btn-sample" [ngSwitch]="origin">
+      <button class="btn-favorite" *ngSwitchCase="originEnum.local">
+        <img
+          (click)="onAdd()"
+          [src]="added ? './assets/star-full.svg' : './assets/star-outline.svg'"
+          alt="Star"
+          class="favorite-add"
+        >
+      </button>
+
+      <button class="btn-favorite" *ngSwitchCase="originEnum.remote">
+        <img
+          (click)="onAdd()"
+          [src]="added ? './assets/star-full.svg' : './assets/star-outline.svg'"
+          alt="Star"
+          class="favorite-add"
+        >
+      </button>
+    </div>
   </div>
 
   <div class="action">
-    <div class="rating"><img src="./assets/rating-star.svg" alt="Rating star"> 1000000</div>
-    <div class="language">Python</div>
-    <a href="#" class="link">Repository link</a>
+    <div class="rating"><img src="./assets/rating-star.svg" alt="Rating star">{{repository.forks_count}}</div>
+    <div class="language">{{repository.language}}</div>
+    <a href="{{repository.html_url}}" class="link" target="_blank">Repository link</a>
   </div>
 </div>

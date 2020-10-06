@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 
 import {HomePageComponent} from './home-page/home-page.component';
 import {SearchFormComponent} from './home-page/search-form/search-form.component';
+import {RepositoryListModule} from '../shared/repository-list/repository-list.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {SearchFormComponent} from './home-page/search-form/search-form.component
     CommonModule,
     RouterModule.forChild([
       {path: '', component: HomePageComponent}
-    ])
+    ]),
+    RepositoryListModule
   ]
 })
 export class HomeModule {

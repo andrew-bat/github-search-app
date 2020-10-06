@@ -1,16 +1,49 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {IOrigin} from '../models/origin.model';
+import {RemoteService} from '../services/remote.service';
+import {Subject} from 'rxjs';
+import {IRepository} from '../models/repository.model';
+import {pluck, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-repository-list',
   templateUrl: './repository-list.component.html',
   styleUrls: ['./repository-list.component.scss']
 })
-export class RepositoryListComponent implements OnInit {
+export class RepositoryListComponent implements OnInit, OnDestroy {
 
-  constructor() {
+  @Input() public origin: IOrigin;
+  public repositories: IRepository[];
+  private destroy$ = new Subject();
+
+  constructor(private remote: RemoteService) {
   }
 
   ngOnInit(): void {
+    this.definedRepositories();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(null);
+    this.destroy$.complete();
+  }
+
+  private definedRepositories(): void {
+    this.origin === IOrigin.local ? this.getLocalData() : this.getRemoteData();
+  }
+
+  private getLocalData(): void {
+  }
+
+  private getRemoteData(): void {
+    this.remote.getList('hello')
+      .pipe(
+        pluck('items'),
+        takeUntil(this.destroy$)
+        )
+      .subscribe((items: IRepository[]) => {
+        this.repositories = items;
+      });
   }
 
 }
