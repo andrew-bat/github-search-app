@@ -1,4 +1,2 @@
-<app-search-form></app-search-form>
-<app-repository-list
-  [origin] = "originEnum.remote"
-></app-repository-list>
+<app-search-form [searchQuery$]="searchQuery$"></app-search-form>
+<app-repository-list [origin]="originEnum.remote" [searchQuery$]="searchQuery$"></app-repository-list>

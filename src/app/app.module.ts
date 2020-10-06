@@ -1,9 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 // Modules
 import {AppRoutingModule} from './app-routing.module';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+
 
 
 // Components
@@ -13,6 +15,7 @@ import {MainLayoutComponent} from './shared/layouts/main-layout/main-layout.comp
 // Services
 import {RemoteService} from './shared/services/remote.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +24,8 @@ import {RemoteService} from './shared/services/remote.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     RemoteService

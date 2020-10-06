@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {HomePageComponent} from './home-page/home-page.component';
 import {SearchFormComponent} from './home-page/search-form/search-form.component';
 import {RepositoryListModule} from '../shared/repository-list/repository-list.module';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -14,10 +15,11 @@ import {RepositoryListModule} from '../shared/repository-list/repository-list.mo
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    RepositoryListModule,
     RouterModule.forChild([
       {path: '', component: HomePageComponent}
-    ]),
-    RepositoryListModule
+    ])
   ]
 })
 export class HomeModule {

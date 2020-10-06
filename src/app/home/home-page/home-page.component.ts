@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IOrigin} from '../../shared/models/origin.model';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -9,6 +10,7 @@ import {IOrigin} from '../../shared/models/origin.model';
 export class HomePageComponent implements OnInit {
 
   public originEnum = IOrigin;
+  public searchQuery$ = new Subject();
 
   constructor() {
   }

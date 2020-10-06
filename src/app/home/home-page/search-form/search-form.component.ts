@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-search-form',
@@ -7,10 +8,17 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SearchFormComponent implements OnInit {
 
+  @Input() public searchQuery$: Subject<string>;
+
+
   constructor() {
   }
 
   ngOnInit(): void {
+  }
+
+  public onSearchChange(event: string): void {
+    this.searchQuery$.next(event);
   }
 
 }
