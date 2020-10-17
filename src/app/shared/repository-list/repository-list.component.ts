@@ -3,7 +3,7 @@ import {IOrigin} from '../models/origin.model';
 import {RemoteService} from '../services/remote.service';
 import {Subject} from 'rxjs';
 import {IRepository} from '../models/repository.model';
-import {debounceTime, pluck, takeUntil} from 'rxjs/operators';
+import {debounceTime, map, pluck, takeUntil} from 'rxjs/operators';
 import {LocalService} from '../services/local.service';
 
 @Component({
@@ -45,6 +45,13 @@ export class RepositoryListComponent implements OnInit, OnDestroy {
     this.remoteService.getList(query)
       .pipe(
         pluck('items'),
+        map(remoteRepositories => {
+          const localRepositories: IRepository[] = this.localService.getList();
+          return remoteRepositories.map((remote: IRepository) => {
+            remote.favorited = localRepositories.some((local: IRepository) => remote.id === local.id);
+            return remote;
+          });
+        }),
         takeUntil(this.destroy$)
       )
       .subscribe((items: IRepository[]) => {

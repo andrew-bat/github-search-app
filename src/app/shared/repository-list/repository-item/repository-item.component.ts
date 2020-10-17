@@ -15,19 +15,17 @@ export class RepositoryItemComponent {
   @Input() public repository: IRepository;
   @Output() public onRemove = new EventEmitter<void>();
   public originEnum = IOrigin;
-  public added: boolean;
 
   constructor(private localService: LocalService) {
   }
 
   public doAdd(): void {
-    this.added = true;
-
     this.localService.addToFavorites(this.repository);
+
+    this.repository.favorited = true;
   }
 
   public doRemove(): void {
-    this.added = false;
     this.localService.removeItems(this.repository);
 
     this.onRemove.emit();

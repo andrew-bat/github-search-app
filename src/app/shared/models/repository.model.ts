@@ -10,4 +10,5 @@ export interface IRepository {
   forks_count: number;
   language: string;
   html_url: string;
+  favorited: boolean;
 }

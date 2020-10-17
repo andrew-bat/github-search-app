@@ -10,7 +10,7 @@
     <div class="btn-sample" [ngSwitch]="origin">
       <button class="btn-favorite" (click)="doAdd()" *ngSwitchCase="originEnum.remote">
         <img
-          src="./assets/star-outline.svg"
+          [src]="repository.favorited ? './assets/star-full.svg' : './assets/star-outline.svg'"
           alt="Star"
           class="favorite-add"
         >
