@@ -3,7 +3,8 @@ import {IOrigin} from '../models/origin.model';
 import {RemoteService} from '../services/remote.service';
 import {Subject} from 'rxjs';
 import {IRepository} from '../models/repository.model';
-import {debounce, debounceTime, pluck, takeUntil} from 'rxjs/operators';
+import {debounceTime, pluck, takeUntil} from 'rxjs/operators';
+import {LocalService} from '../services/local.service';
 
 @Component({
   selector: 'app-repository-list',
@@ -17,7 +18,8 @@ export class RepositoryListComponent implements OnInit, OnDestroy {
   public repositories: IRepository[];
   private destroy$ = new Subject();
 
-  constructor(private remote: RemoteService) {
+  constructor(private remoteService: RemoteService,
+              private localService: LocalService) {
   }
 
   ngOnInit(): void {
@@ -36,10 +38,11 @@ export class RepositoryListComponent implements OnInit, OnDestroy {
   }
 
   private getLocalData(): void {
+    this.repositories = this.localService.getList();
   }
 
   private getRemoteData(query?: string): void {
-    this.remote.getList(query)
+    this.remoteService.getList(query)
       .pipe(
         pluck('items'),
         takeUntil(this.destroy$)
@@ -50,6 +53,10 @@ export class RepositoryListComponent implements OnInit, OnDestroy {
   }
 
   private subSearchQuery(): void {
+    if (!this.searchQuery$) {
+      return;
+    }
+
     this.searchQuery$
       .pipe(
         debounceTime(1000),
@@ -60,4 +67,7 @@ export class RepositoryListComponent implements OnInit, OnDestroy {
       });
   }
 
+  doRemove(): void {
+    this.getLocalData();
+  }
 }

@@ -1,28 +1,36 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 
 import {IOrigin} from '../../models/origin.model';
 import {IRepository} from '../../models/repository.model';
+import {LocalService} from '../../services/local.service';
 
 @Component({
   selector: 'app-repository-item',
   templateUrl: './repository-item.component.html',
   styleUrls: ['./repository-item.component.scss']
 })
-export class RepositoryItemComponent implements OnInit {
+export class RepositoryItemComponent {
 
   @Input() public origin: IOrigin;
   @Input() public repository: IRepository;
+  @Output() public onRemove = new EventEmitter<void>();
   public originEnum = IOrigin;
-  private added = false;
+  public added: boolean;
 
-  constructor() {
+  constructor(private localService: LocalService) {
   }
 
-  ngOnInit(): void {
+  public doAdd(): void {
+    this.added = true;
+
+    this.localService.addToFavorites(this.repository);
   }
 
-  onAdd(): void {
-    this.added = !this.added;
+  public doRemove(): void {
+    this.added = false;
+    this.localService.removeItems(this.repository);
+
+    this.onRemove.emit();
   }
 
 }

@@ -1,3 +1,3 @@
 <ng-container *ngFor = "let repository of repositories">
-  <app-repository-item [origin]="origin" [repository]="repository"></app-repository-item>
+  <app-repository-item [origin]="origin" [repository]="repository" (onRemove)="doRemove()"></app-repository-item>
 </ng-container>

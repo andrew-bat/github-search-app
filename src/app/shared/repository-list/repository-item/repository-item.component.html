@@ -8,19 +8,17 @@
     </div>
 
     <div class="btn-sample" [ngSwitch]="origin">
-      <button class="btn-favorite" *ngSwitchCase="originEnum.local">
+      <button class="btn-favorite" (click)="doAdd()" *ngSwitchCase="originEnum.remote">
         <img
-          (click)="onAdd()"
-          [src]="added ? './assets/star-full.svg' : './assets/star-outline.svg'"
+          src="./assets/star-outline.svg"
           alt="Star"
           class="favorite-add"
         >
       </button>
 
-      <button class="btn-favorite" *ngSwitchCase="originEnum.remote">
+      <button class="btn-favorite" (click)="doRemove()" *ngSwitchCase="originEnum.local">
         <img
-          (click)="onAdd()"
-          [src]="added ? './assets/star-full.svg' : './assets/star-outline.svg'"
+          src="./assets/star-full.svg"
           alt="Star"
           class="favorite-add"
         >

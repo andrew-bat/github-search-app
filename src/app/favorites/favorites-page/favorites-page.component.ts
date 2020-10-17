@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {LocalService} from '../../shared/services/local.service';
+import {IOrigin} from '../../shared/models/origin.model';
+
 
 @Component({
   selector: 'app-favorites-page',
@@ -7,10 +10,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class FavoritesPageComponent implements OnInit {
 
-  constructor() {
+  public originEnum = IOrigin;
+
+  constructor(private localService: LocalService) {
   }
 
   ngOnInit(): void {
+    this.localService.getList();
   }
 
 }

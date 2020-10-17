@@ -3,6 +3,7 @@ export interface IOwner {
 }
 
 export interface IRepository {
+  id: number;
   full_name: string;
   owner: IOwner;
   description: string;
