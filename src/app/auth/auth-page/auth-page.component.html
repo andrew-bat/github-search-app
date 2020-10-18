@@ -1,4 +1,37 @@
-<form class="input-field auth-field">
-  <input id="password" type="password" class="validate">
-  <label for="password">Password</label>
+<form class="card auth" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="card-content">
+    <h2 class="card-title">Log in</h2>
+    <div class="input-field auth-field">
+      <input
+        id="email"
+        type="text"
+        formControlName="email"
+        [class.invalid]="form.get('email').invalid && form.get('email').touched"
+        [class.validate]="form.get('email').valid"
+      >
+      <label for="email">Login</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('email').invalid && form.get('email').touched && form.get('email').errors.required"
+      >Email is required!</span>
+    </div>
+    <div class="input-field auth-field">
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        [class.validate]="form.get('password').valid"
+        [class.invalid]="form.get('password').invalid && form.get('password').touched"
+      >
+      <label for="password">Password</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('password').invalid && form.get('password').touched && form.get('password').errors.required"
+      >Password is required!</span>
+    </div>
+  </div>
+
+  <div class="card-action">
+    <button type="submit" class="btn">Submit</button>
+  </div>
 </form>
