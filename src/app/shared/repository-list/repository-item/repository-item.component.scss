@@ -3,6 +3,7 @@
 
   display: block;
   padding: 5px;
+  padding-right: 10px;
   margin-bottom: 25px;
   width: 100%;
   max-width: 1130px;
@@ -16,6 +17,13 @@
 .repository-item:hover {
   background: #232526;
   background: linear-gradient(to right, rgba(35, 37, 38, .3), rgba(65, 67, 69, .3));
+}
+
+.info {
+  width: 100%;
+  padding: 0 40px;
+  display: block;
+  text-align: left;
 }
 
 .inner-block {
@@ -55,8 +63,10 @@
 }
 
 .btn-favorite {
+  width: 100%;
+  max-width: 55px;
   display: flex;
-  padding: 0 10px;
+  padding: 55px 10px;
   flex-direction: column;
   justify-content: center;
   border: none;
