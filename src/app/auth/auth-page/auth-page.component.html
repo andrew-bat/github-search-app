@@ -28,6 +28,11 @@
         class="helper-text red-text"
         *ngIf="form.get('password').invalid && form.get('password').touched && form.get('password').errors.required"
       >Password is required!</span>
+
+      <span
+        class="helper-text red-text"
+        *ngIf="serverError"
+      >{{serverError}}</span>
     </div>
   </div>
 

@@ -6,14 +6,14 @@ import {HttpClientModule} from '@angular/common/http';
 // Modules
 import {AppRoutingModule} from './app-routing.module';
 
-
-
 // Components
 import {AppComponent} from './app.component';
 import {MainLayoutComponent} from './shared/layouts/main-layout/main-layout.component';
 
 // Services
 import {RemoteService} from './shared/services/remote.service';
+import {AuthService} from './shared/services/auth.service';
+import {LocalService} from './shared/services/local.service';
 
 
 @NgModule({
@@ -28,7 +28,9 @@ import {RemoteService} from './shared/services/remote.service';
     FormsModule
   ],
   providers: [
-    RemoteService
+    AuthService,
+    RemoteService,
+    LocalService
   ],
   bootstrap: [AppComponent]
 })

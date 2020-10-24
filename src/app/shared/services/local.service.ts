@@ -2,9 +2,7 @@ import {Injectable} from '@angular/core';
 import {IRepository} from '../models/repository.model';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LocalService {
   private readonly key = 'github-search-app';
 
@@ -48,8 +46,5 @@ export class LocalService {
   private writeStorage(repositories: IRepository[]): void {
     const value = JSON.stringify(repositories);
     localStorage.setItem(this.key, value);
-  }
-
-  private addLocalStorage(): void {
   }
 }
