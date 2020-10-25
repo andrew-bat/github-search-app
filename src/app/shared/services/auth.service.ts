@@ -7,7 +7,7 @@ const PASSWORD = 'user';
 
 @Injectable()
 export class AuthService {
-  public readonly key = 'token';
+  private readonly key = 'token';
 
   constructor() {
   }

@@ -14,8 +14,8 @@ export class LocalService {
   }
 
   public removeItems(repository: IRepository): void {
-    const repositories = this.readStorage();
-    const filteredRepositories = repositories.filter(r => r.id !== repository.id);
+    const repositories: IRepository[] = this.readStorage();
+    const filteredRepositories: IRepository[] = repositories.filter(r => r.id !== repository.id);
 
     this.writeStorage(filteredRepositories);
   }
