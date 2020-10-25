@@ -12,6 +12,10 @@ export class AuthService {
   constructor() {
   }
 
+  public isAuthenticated(): boolean {
+    return !!this.readToken();
+  }
+
   public login(login: string, pass: string): Observable<void> {
     return this.mockAuthRequest(login, pass)
       .pipe(

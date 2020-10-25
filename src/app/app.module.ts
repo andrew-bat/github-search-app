@@ -15,6 +15,9 @@ import {RemoteService} from './shared/services/remote.service';
 import {AuthService} from './shared/services/auth.service';
 import {LocalService} from './shared/services/local.service';
 
+// Guards
+import {AuthGuard} from './shared/guards/auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import {LocalService} from './shared/services/local.service';
   providers: [
     AuthService,
     RemoteService,
-    LocalService
+    LocalService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
