@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
 export class HomePageComponent implements OnInit {
 
   public originEnum = IOrigin;
-  public searchQuery$ = new Subject();
+  public searchQuery$ = new Subject<string>();
 
   constructor() {
   }

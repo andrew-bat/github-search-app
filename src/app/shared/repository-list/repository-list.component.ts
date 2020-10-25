@@ -16,7 +16,7 @@ export class RepositoryListComponent implements OnInit, OnDestroy {
   @Input() public origin: IOrigin;
   @Input() public searchQuery$: Subject<string>;
   public repositories: IRepository[];
-  private destroy$ = new Subject();
+  private destroy$ = new Subject<void>();
 
   constructor(private remoteService: RemoteService,
               private localService: LocalService) {
